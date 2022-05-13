@@ -12,6 +12,8 @@ public class UsuarioModel {
     private String email;
     private Integer prioridad;
 
+    private String cargo;
+
     public Long getId() {
         return id;
     }
@@ -42,5 +44,13 @@ public class UsuarioModel {
 
     public void setPrioridad(Integer prioridad) {
         this.prioridad = prioridad;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 }
