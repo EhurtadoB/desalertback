@@ -24,7 +24,7 @@ public class HistoriaClinicaModel {
     private String terapeutaPrevia;
 
     //aqui el acudiente
-    private String nombreAcudiente
+    private String nombreAcudiente;
     private String ocupacionAcudiente;
     private int edadAcudiente;
     private String gestaAcudiente;
@@ -33,7 +33,7 @@ public class HistoriaClinicaModel {
     private String tranfusiones;
     private String estadoSaludAcudiente;
 
-//antecedentes personales no patologicos
+//antecedentes personales no patologicos prenatales
     private int embarazo_num;
     private String emNormal;
     private String emCausa;
@@ -42,18 +42,29 @@ public class HistoriaClinicaModel {
     private String partoEutocico;
     private String eutoCausa;
     private String anestesia;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
-    private String antecedentes;
+    private String anesteciaCual;
+    private String Ruptura;
+    private String hora;
+    private Float pesoNam;
+    private Float talla;
+    private Float PC;
+    private Boolean apneaNeonatal;
+    private Boolean ictericia;
+    private Boolean hemorragia;
+    private String convulsiones;
+    private String otros;
+    private String InformacionAd;
 
 
+// antecedentes ginecopstètricos
+    private String menarca;
+    private String fum;
+    private String ciclo;
+    private String ritmo;
+    private boolean dismenorrea;
+    private int gestaciones;
+    private int partos;
+    private int aborto;
 
 
 
