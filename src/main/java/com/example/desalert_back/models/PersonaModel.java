@@ -1,13 +1,13 @@
 package com.example.desalert_back.models;
 
 
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
 public abstract class  PersonaModel {
     @Id
+    @Column(unique = true, nullable = false)
     private Long id;
     private String nombre;
 

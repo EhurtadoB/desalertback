@@ -61,11 +61,93 @@ public class HistoriaClinicaModel {
     private String fum;
     private String ciclo;
     private String ritmo;
-    private boolean dismenorrea;
+    private Boolean dismenorrea;
     private int gestaciones;
     private int partos;
     private int aborto;
+    private int cesareas;
+    private String metodoControl;
 
 
+    //alimentación
+    private Boolean pecho_materno;
+    private Long duracion; //meses
+    private Long ablactacion; //meses
+    private Long destete; //meses
+    //alimentacion real
+    private Boolean carne;
+    private Boolean leche;
+    private Boolean frutas;
+    private Boolean cereales;
+    private Boolean legumbres;
+
+    //inmunizaciones
+    private Boolean poliomelitis;
+    private Boolean rotavirus;
+    private Boolean dpto;
+    private Boolean influenza;
+    private Boolean sarampion;
+    private Boolean epatitisB;
+    private Boolean rubeola;
+    private Boolean neumococo;
+    private Boolean parotiditis;
+    private Boolean bcg;
+    private Boolean varicela;
+    private Boolean tixoide;
+    private Boolean hepatitis;
+    private Boolean a1;
+    private Boolean papiloma;
+    private String sueros;
+
+
+    //desarrollo psicomotor
+    private String datosAnormales;
+    private String alteracionesLenguaje;
+
+    //Higiene y habiotacion
+    private String eliminacionExcretas;
+    private String aguaIntradomiciliaria;
+    private String covivenciaAnimales;
+    private int numeroCuartos;
+    private int personasDuermen;
+    private String tipoPiso;
+    private String ExposicionToxicas;
+
+    //patologicos
+    private Boolean infecciones;
+    private Boolean alergicos;
+    private Boolean traumatismoicos;
+    private Boolean transfuciones;
+    private Boolean quirurgicos;
+    private Boolean hospitalizacion;
+
+
+
+
+    //exploracion fisica
+    private Float perimetroCefalico;
+    private Float perimetroEmbarazo;
+    private Float perimetroPierna;
+    private Float segmentoSuperior;
+    private Float segmentoInterior;
+    private Float tensionArterial;
+    private Float frecuenciaCardiaca;
+    private Float frecuenciaRespiratoria;
+    private Float temperatura;
+
+
+    //anormalidades
+    private Boolean piel;
+    private Boolean cabeza;
+    private Boolean ojos;
+    private Boolean oidos;
+    private Boolean nariz;
+    private Boolean boca;
+    private Boolean cuello;
+    private Boolean torax;
+    private Boolean areacardiaca;
+    private Boolean pulmonar;
+
+    private String firma;
 
 }
