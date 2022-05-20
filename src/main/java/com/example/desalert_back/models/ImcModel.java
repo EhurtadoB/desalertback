@@ -3,6 +3,7 @@ package com.example.desalert_back.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name="IMC")
 public class ImcModel {
     @Id
     @GeneratedValue( strategy= GenerationType.IDENTITY )
