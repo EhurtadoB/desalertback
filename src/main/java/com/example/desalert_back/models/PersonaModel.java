@@ -17,6 +17,7 @@ public abstract class  PersonaModel {
     private Date fechaNacimiento;
 
     private String sexo;
+    private Long telefono;
     
 
     public String getDireccion() {
@@ -51,7 +52,7 @@ public abstract class  PersonaModel {
         this.telefono = telefono;
     }
 
-    private Long telefono;
+
 
     public Long getId() {
         return id;
