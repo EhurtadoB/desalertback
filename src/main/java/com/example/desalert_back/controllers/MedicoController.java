@@ -19,8 +19,8 @@ public class MedicoController {
     }
 
     @PostMapping()
-    public MedicoModel guardarUsuario(@RequestBody MedicoModel usuario) {
-        return this.medicoService.guardarMedicos(usuario);
+    public MedicoModel guardarMedico(@RequestBody MedicoModel medico) {
+        return this.medicoService.guardarMedicos(medico);
     }
 
     @GetMapping(path = "/{id}")

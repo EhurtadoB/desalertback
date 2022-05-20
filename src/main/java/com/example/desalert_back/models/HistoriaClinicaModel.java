@@ -1,7 +1,10 @@
 package com.example.desalert_back.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -149,6 +152,20 @@ public class HistoriaClinicaModel {
     private Boolean pulmonar;
 
     private String firma;
+    
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @JoinColumn(name = "Id_infante")
+    private InfanteModel infante;
+    
+    
+
+	public InfanteModel getInfante() {
+		return infante;
+	}
+
+	public void setInfante(InfanteModel infante) {
+		this.infante = infante;
+	}
 
 	public Float getAltura() {
 		return altura;

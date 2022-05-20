@@ -2,7 +2,8 @@ package com.example.desalert_back.models;
 
 
 import javax.persistence.*;
-import java.util.Date;
+
+import java.sql.Date;
 
 @MappedSuperclass
 public abstract class  PersonaModel {
@@ -16,6 +17,7 @@ public abstract class  PersonaModel {
     private Date fechaNacimiento;
 
     private String sexo;
+    
 
     public String getDireccion() {
         return direccion;
