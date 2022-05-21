@@ -16,6 +16,10 @@ public class InfanteModel extends PersonaModel{
     
     @OneToMany(mappedBy = "infante", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     private List<HistoriaClinicaModel> historias;
+    
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    @JoinColumn(name = "Id_Medico")
+    private MedicoModel medico;
 
     public void agregarIMC(ImcModel imcModel){
         if(Imcs==null) Imcs = new ArrayList<>();
@@ -23,6 +27,7 @@ public class InfanteModel extends PersonaModel{
         imcModel.setInfante(this);
 
     }
+    
     
     public void agregarHistorias(HistoriaClinicaModel historiaClinica) {
     	if(historias==null) historias=new ArrayList<>();

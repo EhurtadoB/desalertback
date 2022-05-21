@@ -7,12 +7,20 @@ import javax.persistence.*;
 public class UsuarioModel {
     @Id
     @Column(unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String email;
-    private Integer prioridad;
-
     private String cargo;
+    
+    @OneToOne(mappedBy="usuario")
+    private AcudienteModel acudiente;
+    
+    @OneToOne(mappedBy="usuario")
+    private MedicoModel medico;
+    
+    @OneToOne(mappedBy="usuario")
+    private AuxiliarModel auxiliar;
 
     public Long getId() {
         return id;
@@ -38,13 +46,6 @@ public class UsuarioModel {
         this.email = email;
     }
 
-    public Integer getPrioridad() {
-        return prioridad;
-    }
-
-    public void setPrioridad(Integer prioridad) {
-        this.prioridad = prioridad;
-    }
 
     public String getCargo() {
         return cargo;
@@ -53,4 +54,30 @@ public class UsuarioModel {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+
+	public PersonaModel getAcudiente() {
+		return acudiente;
+	}
+
+	public void setAcudiente(AcudienteModel acudiente) {
+		this.acudiente = acudiente;
+	}
+
+	public MedicoModel getMedico() {
+		return medico;
+	}
+
+	public void setMedico(MedicoModel medico) {
+		this.medico = medico;
+	}
+
+	public AuxiliarModel getAuxiliar() {
+		return auxiliar;
+	}
+
+	public void setAuxiliar(AuxiliarModel auxiliar) {
+		this.auxiliar = auxiliar;
+	}
+    
+    
 }
