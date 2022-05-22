@@ -31,4 +31,6 @@ public class ImcModel {
     public void setInfante(InfanteModel infante) {
         this.infante = infante;
     }
+    
+    
 }

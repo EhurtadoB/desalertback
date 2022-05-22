@@ -48,6 +48,16 @@ public class UsuarioModel {
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+
+	public PersonaModel getPersona() {
+		return persona;
+	}
+
+	public void setPersona(PersonaModel persona) {
+		this.persona = persona;
+	}
+	
+	
     
     
     

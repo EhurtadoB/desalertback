@@ -1,5 +1,6 @@
 package com.example.desalert_back.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,6 +28,17 @@ public class MedicoModel extends  PersonaModel{
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
+    
+	public void agregarInfante(InfanteModel infante){
+        if(infantes==null) infantes = new ArrayList<>();
+        infantes.add(infante);
+        infante.setMedico(this);
+
+    }
+
+	public List<InfanteModel> getInfantes() {
+		return infantes;
+	}
 
     
 }
