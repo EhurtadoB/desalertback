@@ -5,22 +5,29 @@ import javax.persistence.*;
 
 import java.sql.Date;
 
-@MappedSuperclass
-public abstract class  PersonaModel {
+@Entity
+@Table(name = "Personas")
+@Inheritance(strategy=InheritanceType.JOINED)
+public abstract class  PersonaModel{
     @Id
     @Column(unique = true, nullable = false)
-    private Long id;
-    private String nombre;
+    protected Long id;
+    protected String nombre;
 
-    private String direccion;
+    protected String direccion;
 
-    private Date fechaNacimiento;
+    protected Date fechaNacimiento;
 
-    private String sexo;
-    private Long telefono;
+    protected String sexo;
+    protected Long telefono;
     
+ 
+    
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="id_usuario", referencedColumnName = "id", unique = true, nullable = true)
+    private UsuarioModel usuario;
 
-    public String getDireccion() {
+	public String getDireccion() {
         return direccion;
     }
 
@@ -69,4 +76,14 @@ public abstract class  PersonaModel {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+	public UsuarioModel getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioModel usuario) {
+		this.usuario = usuario;
+	}
+    
+    
 }

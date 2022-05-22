@@ -24,5 +24,7 @@ public class MedicoService {
 
         return medicoRepository.findById(id);
     }
+    
+    
 
 }

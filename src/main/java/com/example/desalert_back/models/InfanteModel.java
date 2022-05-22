@@ -2,11 +2,13 @@ package com.example.desalert_back.models;
 
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name="Infantes")
+@PrimaryKeyJoinColumn(name="Id_persona")
 public class InfanteModel extends PersonaModel{
 	
 	private String urlImg;
@@ -20,8 +22,10 @@ public class InfanteModel extends PersonaModel{
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "Id_Medico")
     private MedicoModel medico;
+    
 
-    public void agregarIMC(ImcModel imcModel){
+
+	public void agregarIMC(ImcModel imcModel){
         if(Imcs==null) Imcs = new ArrayList<>();
         Imcs.add(imcModel);
         imcModel.setInfante(this);
