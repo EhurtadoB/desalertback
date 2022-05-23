@@ -1,30 +1,14 @@
 package com.example.desalert_back.services;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.example.desalert_back.models.InfanteModel;
-import com.example.desalert_back.repositories.InfanteRepository;
 
 
-@Service
-public class InfanteService {
-	@Autowired
-    InfanteRepository infanteRepository;
-    public ArrayList<InfanteModel> obtenerInfantes(){
-        
-        return (ArrayList<InfanteModel>) infanteRepository.findAll();
-    }
-    public InfanteModel guardarInfantes(InfanteModel infante){
+import java.util.List;
 
-        return infanteRepository.save(infante);
-    }
-    public Optional<InfanteModel> obtenerPorId(Long id){
+import dto.InfanteDTO;
 
-        return infanteRepository.findById(id);
-    }
 
+public interface InfanteService {
+	
+	public InfanteDTO crearInfante(long acudienteId, InfanteDTO infante);	
+	public List<InfanteDTO> obtenerInfantesPorAcudienteId(long acudienteId);
 }

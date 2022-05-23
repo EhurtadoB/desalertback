@@ -17,8 +17,8 @@ public class MedicoModel extends  PersonaModel{
 	@Column(name="especialidad")
     private String especialidad;
 	
-	@OneToMany(mappedBy = "medico", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-	private List<InfanteModel> infantes;
+	/*@OneToMany(mappedBy = "medico", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+	private List<InfanteModel> infantes;*/
 	
 
 	public String getEspecialidad() {
@@ -29,7 +29,7 @@ public class MedicoModel extends  PersonaModel{
         this.especialidad = especialidad;
     }
     
-	public void agregarInfante(InfanteModel infante){
+	/*public void agregarInfante(InfanteModel infante){
         if(infantes==null) infantes = new ArrayList<>();
         infantes.add(infante);
         infante.setMedico(this);
@@ -38,7 +38,7 @@ public class MedicoModel extends  PersonaModel{
 
 	public List<InfanteModel> getInfantes() {
 		return infantes;
-	}
+	}*/
 
     
 }

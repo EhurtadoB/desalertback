@@ -2,8 +2,8 @@ package com.example.desalert_back.models;
 
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ public class AcudienteModel extends PersonaModel{
     private String parentesco;
     
     @OneToMany(mappedBy = "acudiente", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-    private List<InfanteModel> infantes;
+    private Set<InfanteModel> infantes= new HashSet<>();
 
 	public String getParentesco() {
         return parentesco;
@@ -27,17 +27,24 @@ public class AcudienteModel extends PersonaModel{
     public void setParentesco(String parentesco) {
         this.parentesco = parentesco;
     }
-    
-    public void agregarInfante(InfanteModel infante){
-        if(infantes==null) infantes = new ArrayList<>();
-        infantes.add(infante);
-        infante.setAcudiente(this);
 
-    }
+	public AcudienteModel() {
+		super();
+	}
 
-	public List<InfanteModel> getInfantes() {
+	public Set<InfanteModel> getInfantes() {
 		return infantes;
 	}
+
+	public void setInfantes(Set<InfanteModel> infantes) {
+		this.infantes = infantes;
+	}
+	
+	
+    
+    
+
+
  
     
 }

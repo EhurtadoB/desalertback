@@ -3,8 +3,11 @@ package com.example.desalert_back.models;
 
 import javax.persistence.*;
 
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="Infantes")
@@ -14,33 +17,38 @@ public class InfanteModel extends PersonaModel{
 	private String urlImg;
 
     @OneToMany(mappedBy = "infante", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-    private List<ImcModel> Imcs;
+    private Set<ImcModel> Imcs = new HashSet<>();
     
-    @OneToMany(mappedBy = "infante", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    /*@OneToMany(mappedBy = "infante", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     private List<HistoriaClinicaModel> historias;
     
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "Id_Medico")
-    private MedicoModel medico;
+    private MedicoModel medico;*/
     
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_acudiente")
     private AcudienteModel acudiente;
     
+    
 
+	public InfanteModel() {
+		super();
+	}
 
-	public void agregarIMC(ImcModel imcModel){
+	/*public void agregarIMC(ImcModel imcModel){
         if(Imcs==null) Imcs = new ArrayList<>();
         Imcs.add(imcModel);
         imcModel.setInfante(this);
-    }
+    }*/
     
     
-    public void agregarHistorias(HistoriaClinicaModel historiaClinica) {
+   /* public void agregarHistorias(HistoriaClinicaModel historiaClinica) {
     	if(historias==null) historias=new ArrayList<>();
     	historias.add(historiaClinica);
     	historiaClinica.setInfante(this);
-    }
+    }*/
 
 	public String getUrlImg() {
 		return urlImg;
@@ -51,7 +59,7 @@ public class InfanteModel extends PersonaModel{
 	}
 
 
-	public List<ImcModel> getImcs() {
+	/*public List<ImcModel> getImcs() {
 		return Imcs;
 	}
 
@@ -74,7 +82,7 @@ public class InfanteModel extends PersonaModel{
 
 	public void setMedico(MedicoModel medico) {
 		this.medico = medico;
-	}
+	}*/
 
 
 	public AcudienteModel getAcudiente() {
