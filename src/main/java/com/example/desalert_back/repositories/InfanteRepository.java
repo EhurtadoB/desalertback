@@ -1,11 +1,11 @@
 package com.example.desalert_back.repositories;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.desalert_back.models.InfanteModel;
 
-@Repository
-public interface InfanteRepository extends CrudRepository<InfanteModel, Long>{
-
+public interface InfanteRepository extends JpaRepository<InfanteModel, Long>{
+	public List<InfanteModel> findByMedicoId(long medicoId);
 }

@@ -11,11 +11,11 @@ public class ImcModel {
     private int id;
     private Float imc;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
+/*    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     @JoinColumn(name = "Id_infante")
     private InfanteModel infante;
 
-
+*/
     public Float getImc() {
         return imc;
     }
@@ -23,14 +23,14 @@ public class ImcModel {
     public void setImc(Float imc) {
         this.imc = imc;
     }
-
+/*
     public InfanteModel getInfante() {
         return infante;
     }
-
+    
     public void setInfante(InfanteModel infante) {
         this.infante = infante;
     }
     
-    
+  */  
 }

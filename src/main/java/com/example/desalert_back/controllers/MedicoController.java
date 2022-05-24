@@ -1,30 +1,35 @@
 package com.example.desalert_back.controllers;
 
-import com.example.desalert_back.models.MedicoModel;
+import com.example.desalert_back.dto.MedicoDTO;
 import com.example.desalert_back.services.MedicoService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
 @RestController
-@RequestMapping("/medico")
+@RequestMapping("/api/")
 public class MedicoController {
     @Autowired
-    MedicoService medicoService;
-    @GetMapping()
-    public ArrayList<MedicoModel> obtenerMedicos(){
-        return medicoService.obtenerMedicos();
-    }
+    MedicoService medicoServicio;
 
-    @PostMapping()
-    public MedicoModel guardarMedico(@RequestBody MedicoModel medico) {
-        return this.medicoService.guardarMedicos(medico);
+    @GetMapping("/medicos")
+    public List<MedicoDTO> listarMedicos(){
+    	return medicoServicio.obtenerTodosMedicos();
     }
-
-    @GetMapping(path = "/{id}")
-    public Optional<MedicoModel> obtenermedicoPorId(@PathVariable("id") Long id){
-        return this.medicoService.obtenerPorId(id);
+    
+    @GetMapping("/medicos/{id}")
+    public ResponseEntity<MedicoDTO> obtenerMedicoPorId(@PathVariable(name = "id") long id){
+    	return ResponseEntity.ok(medicoServicio.obtenerMedicoPorId(id));
     }
+    
+    
+    @PostMapping("/medicos")
+    public ResponseEntity<MedicoDTO> guardarMedico(@RequestBody MedicoDTO medicoDTO){
+    	return new ResponseEntity<>(medicoServicio.crearMedico(medicoDTO), HttpStatus.CREATED);
+    }
+    
 }
