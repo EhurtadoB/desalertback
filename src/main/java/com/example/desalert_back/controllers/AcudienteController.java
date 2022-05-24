@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desalert_back.services.AcudienteService;
 
-import dto.AcudienteDTO;
+import com.example.desalert_back.dto.AcudienteDTO;
 
 @RestController
 @RequestMapping("/api/acudiente")

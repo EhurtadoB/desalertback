@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desalert_back.services.ImcService;
 
-import dto.ImcDTO;
+import com.example.desalert_back.dto.ImcDTO;
 
 @RestController
 @RequestMapping("/api/")

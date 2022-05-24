@@ -11,8 +11,8 @@ import com.example.desalert_back.models.InfanteModel;
 import com.example.desalert_back.repositories.ImcRepository;
 import com.example.desalert_back.repositories.InfanteRepository;
 
-import dto.ImcDTO;
-import excepciones.ResourceNotFoundException;
+import com.example.desalert_back.dto.ImcDTO;
+import com.example.desalert_back.excepciones.ResourceNotFoundException;
 
 @Service
 public class ImcServiceImpl implements ImcService{

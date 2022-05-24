@@ -1,18 +1,24 @@
-package dto;
+package com.example.desalert_back.dto;
 
 import java.sql.Date;
 
-public class InfanteDTO {
-	private long id;
+public class AuxiliarDTO {
+	
+	private Long id;
 	private String nombre;
 	private String direccion;
 	private Date fechaNacimiento;
 	private String sexo;
-	private String urlImg;
-	public long getId() {
+	private Long telefono;
+	
+	
+	public AuxiliarDTO() {
+		super();
+	}
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNombre() {
@@ -39,14 +45,11 @@ public class InfanteDTO {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public String getUrlImg() {
-		return urlImg;
+	public Long getTelefono() {
+		return telefono;
 	}
-	public void setUrlImg(String urlImg) {
-		this.urlImg = urlImg;
-	}
-	public InfanteDTO() {
-		super();
+	public void setTelefono(Long telefono) {
+		this.telefono = telefono;
 	}
 	
 	

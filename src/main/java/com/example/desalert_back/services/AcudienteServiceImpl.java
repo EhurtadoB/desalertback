@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.desalert_back.models.AcudienteModel;
 import com.example.desalert_back.repositories.AcudienteRepository;
 
-import dto.AcudienteDTO;
-import excepciones.ResourceNotFoundException;
+import com.example.desalert_back.dto.AcudienteDTO;
+import com.example.desalert_back.excepciones.ResourceNotFoundException;
 
 @Service
 public class AcudienteServiceImpl implements AcudienteService{
@@ -18,7 +18,7 @@ public class AcudienteServiceImpl implements AcudienteService{
 	private AcudienteRepository acudienteRepository;
 	
 	@Override
-	public AcudienteDTO crearAcudiente(dto.AcudienteDTO acudienteDTO) {
+	public AcudienteDTO crearAcudiente(AcudienteDTO acudienteDTO) {
 		// convertimos de DTO a entidad
 		AcudienteModel acudiente = mapearEntidad(acudienteDTO);
 		AcudienteModel nuevoAcudiente = acudienteRepository.save(acudiente);

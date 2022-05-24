@@ -1,18 +1,23 @@
-package dto;
+package com.example.desalert_back.dto;
 
 import java.sql.Date;
 
-public class AuxiliarDTO {
+public class AcudienteDTO {
 	
 	private Long id;
 	private String nombre;
+
 	private String direccion;
+
 	private Date fechaNacimiento;
+
 	private String sexo;
 	private Long telefono;
+	private String parentesco;
 	
 	
-	public AuxiliarDTO() {
+	
+	public AcudienteDTO() {
 		super();
 	}
 	public Long getId() {
@@ -51,6 +56,14 @@ public class AuxiliarDTO {
 	public void setTelefono(Long telefono) {
 		this.telefono = telefono;
 	}
+	public String getParentesco() {
+		return parentesco;
+	}
+	public void setParentesco(String parentesco) {
+		this.parentesco = parentesco;
+	}
+	 
+	 
 	
-	
+
 }

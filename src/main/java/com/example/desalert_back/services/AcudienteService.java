@@ -3,7 +3,7 @@ package com.example.desalert_back.services;
 
 import java.util.List;
 
-import dto.AcudienteDTO;
+import com.example.desalert_back.dto.AcudienteDTO;
 
 
 public interface AcudienteService {

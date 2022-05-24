@@ -29,7 +29,7 @@ public class InfanteModel extends PersonaModel{
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_acudiente")
-    private AcudienteModel acudiente;
+    private AcudienteModel  acudiente;
     
     
 

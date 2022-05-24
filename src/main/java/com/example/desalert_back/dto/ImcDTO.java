@@ -1,4 +1,4 @@
-package dto;
+package com.example.desalert_back.dto;
 
 public class ImcDTO {
 	private int id;

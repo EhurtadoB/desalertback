@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desalert_back.services.InfanteService;
 
-import dto.InfanteDTO;
+import com.example.desalert_back.dto.InfanteDTO;
 
 @RestController
 @RequestMapping("/api/")

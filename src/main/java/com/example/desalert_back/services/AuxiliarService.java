@@ -2,7 +2,7 @@ package com.example.desalert_back.services;
 
 import java.util.List;
 
-import dto.AuxiliarDTO;
+import com.example.desalert_back.dto.AuxiliarDTO;
 
 public interface AuxiliarService {
 	

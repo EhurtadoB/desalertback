@@ -11,8 +11,8 @@ import com.example.desalert_back.models.InfanteModel;
 import com.example.desalert_back.repositories.AcudienteRepository;
 import com.example.desalert_back.repositories.InfanteRepository;
 
-import dto.InfanteDTO;
-import excepciones.ResourceNotFoundException;
+import com.example.desalert_back.dto.InfanteDTO;
+import com.example.desalert_back.excepciones.ResourceNotFoundException;
 
 @Service
 public class InfanteServiceImpl implements InfanteService{

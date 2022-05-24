@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desalert_back.services.AuxiliarService;
 
-import dto.AuxiliarDTO;
+import com.example.desalert_back.dto.AuxiliarDTO;
 
 @RestController
 @RequestMapping("/api/auxiliar")

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.desalert_back.models.AuxiliarModel;
 import com.example.desalert_back.repositories.AuxiliarRepository;
 
-import dto.AuxiliarDTO;
-import excepciones.ResourceNotFoundException;
+import com.example.desalert_back.dto.AuxiliarDTO;
+import com.example.desalert_back.excepciones.ResourceNotFoundException;
 
 @Service
 public class AuxiliarServiceImpl implements AuxiliarService {

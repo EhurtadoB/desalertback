@@ -4,7 +4,7 @@ package com.example.desalert_back.services;
 
 import java.util.List;
 
-import dto.InfanteDTO;
+import com.example.desalert_back.dto.InfanteDTO;
 
 
 public interface InfanteService {
