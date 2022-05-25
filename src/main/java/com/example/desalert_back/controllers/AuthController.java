@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.desalert_back.dto.LoginDTO;
+import com.example.desalert_back.seguridad.JWTAuthResonseDTO;
+import com.example.desalert_back.seguridad.JwtTokenProvider;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -21,11 +23,20 @@ public class AuthController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
+	@Autowired
+	private JwtTokenProvider jwtTokenProvider;
+	
 	@PostMapping("/iniciarSesion")
-	public ResponseEntity<String> authenticatedUser(@RequestBody LoginDTO loginDTO){
+	public ResponseEntity<JWTAuthResonseDTO> authenticateUser(@RequestBody LoginDTO loginDTO){
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getUsernameOrEmail(), loginDTO.getPassword()));
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);	
-		return new ResponseEntity<>("Ha iniciado sesion con exito  !", HttpStatus.OK);
+		
+		//obtenemos el token del jwtTokenProvider
+		String token = jwtTokenProvider.generarToken(authentication);
+		
+		
+		return ResponseEntity.ok(new JWTAuthResonseDTO(token));
+		//return new ResponseEntity<>("Ha iniciado sesion con exito  !", HttpStatus.OK);
 	}
 }

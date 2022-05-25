@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,17 +38,20 @@ public class HistoriaClinicaController {
 		return new ResponseEntity<>(historiaDTO, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/infantes/{infanteId}/historias")
 	public ResponseEntity<HistoriaClinicaDTO> guardarHistoriaClinica(@PathVariable(name="infanteId") long infanteId, @RequestBody HistoriaClinicaDTO historiaDTO){
 		return new ResponseEntity<>(historiaServicio.crearHistoria(infanteId, historiaDTO), HttpStatus.CREATED);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("/infantes/{infanteId}/historias/{id}")
 	public ResponseEntity<HistoriaClinicaDTO> actualizarHistoria(@PathVariable(name="infanteId") Long infanteId, @PathVariable(name="id") Long historiaId, @RequestBody HistoriaClinicaDTO historiaDTO){
 		HistoriaClinicaDTO historiaActualizada = historiaServicio.actualizarHistoria(infanteId, historiaId, historiaDTO);
 		return new ResponseEntity<>(historiaActualizada, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("/infantes/{infanteId}/historias/{id}")
 	public ResponseEntity<String> eliminarHistoria(@PathVariable(name="infanteId") Long infanteId, @PathVariable(name="id") Long historiaId){
 		historiaServicio.eliminarHistoria(infanteId, historiaId);

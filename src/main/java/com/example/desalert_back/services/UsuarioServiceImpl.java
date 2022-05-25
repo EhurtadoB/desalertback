@@ -1,18 +1,23 @@
 package com.example.desalert_back.services;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.desalert_back.dto.UsuarioDTO;
 import com.example.desalert_back.excepciones.ControlAppException;
 import com.example.desalert_back.excepciones.ResourceNotFoundException;
 import com.example.desalert_back.models.PersonaModel;
+import com.example.desalert_back.models.RolesModel;
 import com.example.desalert_back.models.UsuarioModel;
 import com.example.desalert_back.repositories.PersonaRepository;
+import com.example.desalert_back.repositories.RolRepository;
 import com.example.desalert_back.repositories.UsuarioRepository;
 
 @Service
@@ -24,17 +29,35 @@ public class UsuarioServiceImpl implements UsuarioService{
 	@Autowired
 	PersonaRepository personaRepositorio;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	RolRepository rolRepositorio;
+	
 	@Override
-	public UsuarioDTO crearUsuario(long personaId, UsuarioDTO usuarioDTO) {
-		UsuarioModel usuario = mapearEntidad(usuarioDTO);
+	public ResponseEntity<?> crearUsuario(long personaId, UsuarioDTO usuarioDTO, String rolUsuario) {
 		PersonaModel persona = personaRepositorio.findById(personaId)
 				.orElseThrow(()->new ResourceNotFoundException("persona", "id", personaId));
 		
-		usuario.setPersona(persona);
+		RolesModel rol = rolRepositorio.findByNombre(rolUsuario)
+				.orElseThrow(()->new ResourceNotFoundException("Rol", "rol", personaId));
 		
-		UsuarioModel nuevoUsuario = usuarioRepositorio.save(usuario);
+		if(usuarioRepositorio.existsByEmail(usuarioDTO.getEmail())) {
+			return new ResponseEntity<>("Este Email ya está registrado", HttpStatus.BAD_REQUEST);
+		}
+		
+		UsuarioModel nuevoUsuario = new UsuarioModel();
+		nuevoUsuario.setEmail(usuarioDTO.getEmail());
+		nuevoUsuario.setContrasena(passwordEncoder.encode(usuarioDTO.getContrasena()));
+		nuevoUsuario.setPersona(persona);
+		
+		RolesModel roles= rolRepositorio.findByNombre(rolUsuario).get();
+		nuevoUsuario.setRoles(Collections.singleton(roles));
+		
+		usuarioRepositorio.save(nuevoUsuario);
 
-		return mapearDTO(nuevoUsuario);
+		return new ResponseEntity<>("Usuario registrado correctamente", HttpStatus.OK);
 	}
 	
 	// convertir a DTO
@@ -49,7 +72,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 
 	// convertir a Entidad
-	private UsuarioModel mapearEntidad(UsuarioDTO usuarioDTO) {
+	/*private UsuarioModel mapearEntidad(UsuarioDTO usuarioDTO) {
 		UsuarioModel usuario = new UsuarioModel();
 
 		usuario.setId(usuarioDTO.getId());
@@ -57,7 +80,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 		usuario.setContrasena(usuarioDTO.getContrasena());
 
 		return usuario;
-	}
+	}*/
 
 	@Override
 	public List<UsuarioDTO> obtenerUsuarioPorPersona(long personaId) {

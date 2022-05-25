@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.desalert_back.dto.UsuarioDTO;
+import com.example.desalert_back.models.UsuarioModel;
+import com.example.desalert_back.repositories.UsuarioRepository;
 import com.example.desalert_back.services.UsuarioService;
 
 @RestController
@@ -17,10 +19,15 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioServicio;
 
-	@PostMapping("/personas/{id}/usuario")
-	public ResponseEntity<UsuarioDTO> guardarUsuario(@PathVariable(name = "id") long idPersona,
+	@Autowired
+	UsuarioRepository usuarioRepositorio;
+	
+	
+	@PostMapping("/personas/{id}/usuario/{rolUsuario}")
+	public ResponseEntity<?> guardarUsuario(@PathVariable(name = "id") long idPersona, @PathVariable(name = "rolUsuario") String rolUsuario,
 			@RequestBody UsuarioDTO usuarioDTO) {
-		return new ResponseEntity<>(usuarioServicio.crearUsuario(idPersona, usuarioDTO), HttpStatus.CREATED);
+		
+		return new ResponseEntity<>(usuarioServicio.crearUsuario(idPersona, usuarioDTO, rolUsuario), HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/personas/{idPersona}/usuario")

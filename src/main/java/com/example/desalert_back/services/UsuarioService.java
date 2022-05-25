@@ -2,11 +2,13 @@ package com.example.desalert_back.services;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import com.example.desalert_back.dto.UsuarioDTO;
 
 public interface UsuarioService {
 	
-	public UsuarioDTO crearUsuario(long personaId, UsuarioDTO usuarioDTO);
+	public ResponseEntity<?> crearUsuario(long personaId, UsuarioDTO usuarioDTO, String rol);
 	
 	public List<UsuarioDTO> obtenerUsuarioPorPersona(long personaId);
 	
