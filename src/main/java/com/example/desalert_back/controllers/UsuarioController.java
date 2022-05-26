@@ -1,55 +1,54 @@
 package com.example.desalert_back.controllers;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
+import com.example.desalert_back.dto.UsuarioDTO;
 import com.example.desalert_back.models.UsuarioModel;
+import com.example.desalert_back.repositories.UsuarioRepository;
 import com.example.desalert_back.services.UsuarioService;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/api/")
 public class UsuarioController {
 	@Autowired
-	UsuarioService usuarioService;
+	UsuarioService usuarioServicio;
+
+	@Autowired
+	UsuarioRepository usuarioRepositorio;
 	
-	@GetMapping()
-	public ArrayList<UsuarioModel> obtenerUsuarios(){
-		return usuarioService.obtenerUsuarios();
-	}
 	
-	@PostMapping()
-	public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario) {
-		return this.usuarioService.guardarUsuarios(usuario);
-	}
-	
-	@GetMapping(path = "/{id}")
-	public Optional<UsuarioModel> obtenerUsuarioPorId(@PathVariable("id") Long id){
-		return this.usuarioService.obtenerPorId(id);
+	@PostMapping("/personas/{id}/usuario/{rolUsuario}")
+	public ResponseEntity<?> guardarUsuario(@PathVariable(name = "id") long idPersona, @PathVariable(name = "rolUsuario") String rolUsuario,
+			@RequestBody UsuarioDTO usuarioDTO) {
+		
+		return new ResponseEntity<>(usuarioServicio.crearUsuario(idPersona, usuarioDTO, rolUsuario), HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/query")
-	public ArrayList<UsuarioModel> obtenerUsuarioPorcargo(@RequestParam("cargo") String cargo){
-		return this.usuarioService.obtenerPorCargo(cargo);
+	@GetMapping("/personas/{idPersona}/usuario")
+    public List<UsuarioDTO> listarUsuariosPorPersona(@PathVariable(name= "idPersona") long idPersona){
+    	return usuarioServicio.obtenerUsuarioPorPersona(idPersona);
+    }
+	
+	@GetMapping("/personas/{idPersona}/usuario/{id}")
+    public ResponseEntity<UsuarioDTO> obtenerUsuarioPorId(@PathVariable(name = "idPersona") long idPersona, @PathVariable(name = "id") long idUsuario){
+    	
+    	UsuarioDTO usuarioDTO = usuarioServicio.obtenerUsuarioPorId(idPersona, idUsuario);
+    	
+    	return new ResponseEntity<>(usuarioDTO, HttpStatus.OK);
+    }
+	
+	@PutMapping("/personas/{idPersona}/usuario/{id}")
+	public ResponseEntity<UsuarioDTO> actualizarUsuario(@PathVariable(name="idPersona") Long personaId, @PathVariable(name="id") Long usuarioId, @RequestBody UsuarioDTO usuarioDTO){
+		UsuarioDTO usuarioActualizado = usuarioServicio.actualizarUsuario(personaId, usuarioId, usuarioDTO);
+		return new ResponseEntity<>(usuarioActualizado, HttpStatus.OK);
 	}
-	@DeleteMapping (path ="/{id}")
-	public String eliminarPorId(@PathVariable("id") Long id) {
-		boolean ok = this.usuarioService.eliminarUsuario(id);
-		if(ok) {
-			return "se elimino el usuario con id "+id;
-		}else {
-			return "No puedoo eliminar el usuario con id "+id;
-		}
-	}
+	
 	
 
 }

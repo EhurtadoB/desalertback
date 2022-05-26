@@ -3,10 +3,7 @@ package com.example.desalert_back.models;
 
 import javax.persistence.*;
 
-
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,36 +16,54 @@ public class InfanteModel extends PersonaModel{
     @OneToMany(mappedBy = "infante", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     private Set<ImcModel> Imcs = new HashSet<>();
     
-    /*@OneToMany(mappedBy = "infante", cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-    private List<HistoriaClinicaModel> historias;
-    
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
-    @JoinColumn(name = "Id_Medico")
-    private MedicoModel medico;*/
-    
+    @OneToMany(mappedBy = "infante", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<HistoriaClinicaModel> historias = new HashSet<>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_medico", nullable = false)
+	private MedicoModel medico;;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Id_acudiente")
     private AcudienteModel  acudiente;
     
-    
+    public Set<HistoriaClinicaModel> getHistorias() {
+		return historias;
+	}
+
+	public InfanteModel(String urlImg, Set<HistoriaClinicaModel> historias, MedicoModel medico) {
+		super();
+		this.urlImg = urlImg;
+		this.historias = historias;
+		this.medico = medico;
+	}
+
+	public MedicoModel getMedico() {
+		return medico;
+	}
+
+	public void setMedico(MedicoModel medico) {
+		this.medico = medico;
+	}
+
+	public void setHistorias(Set<HistoriaClinicaModel> historias) {
+		this.historias = historias;
+	}
+
+	public InfanteModel(String urlImg) {
+		super();
+		this.urlImg = urlImg;
+	}
+
+	public InfanteModel(String urlImg, Set<HistoriaClinicaModel> historias) {
+		super();
+		this.urlImg = urlImg;
+		this.historias = historias;
+	}
 
 	public InfanteModel() {
 		super();
 	}
-
-	/*public void agregarIMC(ImcModel imcModel){
-        if(Imcs==null) Imcs = new ArrayList<>();
-        Imcs.add(imcModel);
-        imcModel.setInfante(this);
-    }*/
-    
-    
-   /* public void agregarHistorias(HistoriaClinicaModel historiaClinica) {
-    	if(historias==null) historias=new ArrayList<>();
-    	historias.add(historiaClinica);
-    	historiaClinica.setInfante(this);
-    }*/
 
 	public String getUrlImg() {
 		return urlImg;
@@ -56,34 +71,17 @@ public class InfanteModel extends PersonaModel{
 
 	public void setUrlImg(String urlImg) {
 		this.urlImg = urlImg;
-	}
+	} 
 
+	
 
-	/*public List<ImcModel> getImcs() {
+	public Set<ImcModel> getImcs() {
 		return Imcs;
 	}
 
-
-	public void setImcs(List<ImcModel> imcs) {
+	public void setImcs(Set<ImcModel> imcs) {
 		Imcs = imcs;
 	}
-
-
-	public List<HistoriaClinicaModel> getHistorias() {
-		return historias;
-	}
-
-
-
-	public MedicoModel getMedico() {
-		return medico;
-	}
-
-
-	public void setMedico(MedicoModel medico) {
-		this.medico = medico;
-	}*/
-
 
 	public AcudienteModel getAcudiente() {
 		return acudiente;

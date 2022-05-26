@@ -1,153 +1,66 @@
-package com.example.desalert_back.models;
+package com.example.desalert_back.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
-@Entity
-@Table(name = "Historias_clinicas")
-public class HistoriaClinicaModel {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+public class HistoriaClinicaDTO {
 	private long id;
-
-	@Column(nullable = true)
 	private Float altura;
-	@Column(nullable = true)
 	private Float peso;
-
-	// padecimiento actual
-	@Column(nullable = true)
 	private String padecimientos;
-	@Column(nullable = true)
 	private String diagnosticoPrevio;
-/*	@Column(nullable = true)
-	private String estudioPrevio;
-	@Column(nullable = true)
+	/*private String estudioPrevio;
 	private String terapeutaPrevia;
-	// alimentación
-	@Column(nullable = true)
 	private Boolean pecho_materno;
-	@Column(nullable = true)
-	private Long duracion; // meses
-	@Column(nullable = true)
-	private Long ablactacion; // meses
-	@Column(nullable = true)
-	private Long destete; // meses
-	// alimentacion real
-	@Column(nullable = true)
+	private Long duracion;
+	private Long ablactacion;
+	private Long destete;
 	private Boolean carne;
-	@Column(nullable = true)
 	private Boolean leche;
-	@Column(nullable = true)
 	private Boolean frutas;
-	@Column(nullable = true)
 	private Boolean cereales;
-	@Column(nullable = true)
 	private Boolean legumbres;
-	// inmunizaciones
-	@Column(nullable = true)
 	private Boolean poliomelitis;
-	@Column(nullable = true)
 	private Boolean rotavirus;
-	@Column(nullable = true)
 	private Boolean dpto;
-	@Column(nullable = true)
 	private Boolean influenza;
-	@Column(nullable = true)
 	private Boolean sarampion;
-	@Column(nullable = true)
 	private Boolean epatitisB;
-	@Column(nullable = true)
 	private Boolean rubeola;
-	@Column(nullable = true)
 	private Boolean neumococo;
-	@Column(nullable = true)
 	private Boolean parotiditis;
-	@Column(nullable = true)
 	private Boolean bcg;
-	@Column(nullable = true)
 	private Boolean varicela;
-	@Column(nullable = true)
 	private Boolean tixoide;
-	@Column(nullable = true)
 	private Boolean hepatitis;
-	@Column(nullable = true)
 	private Boolean a1;
-	@Column(nullable = true)
 	private Boolean papiloma;
-	@Column(nullable = true)
 	private String sueros;
-	// desarrollo psicomotor
-	@Column(nullable = true)
 	private String datosAnormales;
-	@Column(nullable = true)
 	private String alteracionesLenguaje;
-	// patologicos
-	@Column(nullable = true)
 	private Boolean infecciones;
-	@Column(nullable = true)
 	private Boolean alergicos;
-	@Column(nullable = true)
 	private Boolean traumatismoicos;
-	@Column(nullable = true)
 	private Boolean transfuciones;
-	@Column(nullable = true)
 	private Boolean quirurgicos;
-	@Column(nullable = true)
 	private Boolean hospitalizacion;
-	// exploracion fisica
-	@Column(nullable = true)
 	private Float perimetroCefalico;
-	@Column(nullable = true)
 	private Float perimetroEmbarazo;
-	@Column(nullable = true)
 	private Float perimetroPierna;
-	@Column(nullable = true)
 	private Float segmentoSuperior;
-	@Column(nullable = true)
 	private Float segmentoInterior;
-	@Column(nullable = true)
 	private Float tensionArterial;
-	@Column(nullable = true)
 	private Float frecuenciaCardiaca;
-	@Column(nullable = true)
 	private Float frecuenciaRespiratoria;
-	@Column(nullable = true)
 	private Float temperatura;
-	// anormalidades
 	private Boolean piel;
-	@Column(nullable = true)
 	private Boolean cabeza;
-	@Column(nullable = true)
 	private Boolean ojos;
-	@Column(nullable = true)
 	private Boolean oidos;
-	@Column(nullable = true)
 	private Boolean nariz;
-	@Column(nullable = true)
 	private Boolean boca;
-	@Column(nullable = true)
 	private Boolean cuello;
-	@Column(nullable = true)
 	private Boolean torax;
-	@Column(nullable = true)
 	private Boolean areacardiaca;
-	@Column(nullable = true)
 	private Boolean pulmonar;
-	@Column(nullable = true)
 	private String firma; */
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_infante", nullable = false)
-	private InfanteModel infante;
 
 	public Long getId() {
 		return id;
@@ -188,8 +101,8 @@ public class HistoriaClinicaModel {
 	public void setDiagnosticoPrevio(String diagnosticoPrevio) {
 		this.diagnosticoPrevio = diagnosticoPrevio;
 	}
-
-/*	public String getEstudioPrevio() {
+/*
+	public String getEstudioPrevio() {
 		return estudioPrevio;
 	}
 	public void setEstudioPrevio(String estudioPrevio) {
@@ -518,18 +431,8 @@ public class HistoriaClinicaModel {
 	}
 	public void setFirma(String firma) {
 		this.firma = firma;
-	}*/
-
-	public InfanteModel getInfante() {
-		return infante;
 	}
-
-	public void setInfante(InfanteModel infante) {
-		this.infante = infante;
-	}
-
-	public HistoriaClinicaModel() {
+	public HistoriaClinicaDTO() {
 		super();
-	}
-
+	}*/
 }
