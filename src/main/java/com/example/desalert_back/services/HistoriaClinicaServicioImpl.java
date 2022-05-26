@@ -31,6 +31,12 @@ public class HistoriaClinicaServicioImpl implements HistoriaClinicaService{
 	@Autowired
 	private MedicoRepository medicoRepositorio;
 	
+	@Autowired
+	private InfanteServiceImpl infanteServicio;
+	
+	@Autowired
+	private MedicoServiceImpl medicoServicio;
+	
 	@Override
 	public HistoriaClinicaDTO crearHistoria(long medicoId, long infanteId, HistoriaClinicaDTO historiaDTO) {
 		HistoriaClinicaModel historia = mapearEntidad(historiaDTO);
@@ -50,6 +56,21 @@ public class HistoriaClinicaServicioImpl implements HistoriaClinicaService{
 		return mapearDTO(nuevaHistoria);
 	}
 	
+	private HistoriaClinicaDTO mapearDTO(HistoriaClinicaModel historia, MedicoModel medico, InfanteModel infante) {
+		HistoriaClinicaDTO historiaDTO = new HistoriaClinicaDTO();
+		
+		historiaDTO.setId(historia.getId());
+		historiaDTO.setAltura(historia.getAltura());
+		historiaDTO.setPeso(historia.getPeso());
+		historiaDTO.setPadecimientos(historia.getPadecimientos());
+		historiaDTO.setDiagnosticoPrevio(historia.getDiagnosticoPrevio());
+		
+		historiaDTO.setInfanteDTO(infanteServicio.mapearDTO(infante));
+		
+		return historiaDTO;
+		
+	}
+	
 	private HistoriaClinicaDTO mapearDTO(HistoriaClinicaModel historia) {
 		HistoriaClinicaDTO historiaDTO = new HistoriaClinicaDTO();
 		
@@ -58,6 +79,8 @@ public class HistoriaClinicaServicioImpl implements HistoriaClinicaService{
 		historiaDTO.setPeso(historia.getPeso());
 		historiaDTO.setPadecimientos(historia.getPadecimientos());
 		historiaDTO.setDiagnosticoPrevio(historia.getDiagnosticoPrevio());
+		historiaDTO.setInfanteDTO(infanteServicio.mapearDTO(historia.getInfante()));
+		historiaDTO.setMedicoDTO(medicoServicio.mapearDTO(historia.getMedico()));
 		
 		return historiaDTO;
 		

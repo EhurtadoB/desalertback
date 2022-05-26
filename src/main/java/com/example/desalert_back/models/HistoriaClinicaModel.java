@@ -1,5 +1,7 @@
 package com.example.desalert_back.models;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -143,7 +145,9 @@ public class HistoriaClinicaModel {
 	@Column(nullable = true)
 	private Boolean pulmonar;
 	@Column(nullable = true)
-	private String firma; */
+	private String firma;
+	@Column(nullable = false)
+	private Date fechaCreacion;*/
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_infante", nullable = false)

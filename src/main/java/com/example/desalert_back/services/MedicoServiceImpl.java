@@ -29,7 +29,7 @@ public class MedicoServiceImpl implements MedicoService {
 	}
 
 	// convertir a DTO
-	private MedicoDTO mapearDTO(MedicoModel medico) {
+	public MedicoDTO mapearDTO(MedicoModel medico) {
 		MedicoDTO medicoDTO = new MedicoDTO();
 
 		medicoDTO.setId(medico.getId());
@@ -44,7 +44,7 @@ public class MedicoServiceImpl implements MedicoService {
 	}
 
 	// convertir a Entidad
-	private MedicoModel mapearEntidad(MedicoDTO medicoDTO) {
+	public MedicoModel mapearEntidad(MedicoDTO medicoDTO) {
 		MedicoModel medico = new MedicoModel();
 
 		medico.setId(medicoDTO.getId());

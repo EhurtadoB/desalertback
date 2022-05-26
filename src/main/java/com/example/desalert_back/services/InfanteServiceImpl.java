@@ -46,7 +46,7 @@ public class InfanteServiceImpl implements InfanteService{
 	}
 	
 	//convertir entidad a DTO
-		private InfanteDTO mapearDTO(InfanteModel infante) {
+		public InfanteDTO mapearDTO(InfanteModel infante) {
 			InfanteDTO infanteDTO = new InfanteDTO();
 			infanteDTO.setId(infante.getId());
 			infanteDTO.setNombre(infante.getNombre());
@@ -60,7 +60,7 @@ public class InfanteServiceImpl implements InfanteService{
 		
 		
 		//convierte de DTO a entidad
-		private InfanteModel mapearEntidad(InfanteDTO infanteDTO) {
+		public InfanteModel mapearEntidad(InfanteDTO infanteDTO) {
 			InfanteModel infante = new InfanteModel();
 			infante.setId(infanteDTO.getId());
 			infante.setNombre(infanteDTO.getNombre());

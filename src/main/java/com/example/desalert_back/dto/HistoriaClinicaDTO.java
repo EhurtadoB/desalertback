@@ -6,6 +6,8 @@ public class HistoriaClinicaDTO {
 	private Float peso;
 	private String padecimientos;
 	private String diagnosticoPrevio;
+	private InfanteDTO infanteDTO;
+	private MedicoDTO medicoDTO;
 	/*private String estudioPrevio;
 	private String terapeutaPrevia;
 	private Boolean pecho_materno;
@@ -62,8 +64,29 @@ public class HistoriaClinicaDTO {
 	private Boolean pulmonar;
 	private String firma; */
 
+	
 	public Long getId() {
 		return id;
+	}
+
+	public MedicoDTO getMedicoDTO() {
+		return medicoDTO;
+	}
+
+	public void setMedicoDTO(MedicoDTO medicoDTO) {
+		this.medicoDTO = medicoDTO;
+	}
+
+	public HistoriaClinicaDTO() {
+		super();
+	}
+
+	public InfanteDTO getInfanteDTO() {
+		return infanteDTO;
+	}
+
+	public void setInfanteDTO(InfanteDTO infanteDTO) {
+		this.infanteDTO = infanteDTO;
 	}
 
 	public void setId(Long id) {
