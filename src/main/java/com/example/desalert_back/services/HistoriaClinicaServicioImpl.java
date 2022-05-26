@@ -12,8 +12,10 @@ import com.example.desalert_back.excepciones.ControlAppException;
 import com.example.desalert_back.excepciones.ResourceNotFoundException;
 import com.example.desalert_back.models.HistoriaClinicaModel;
 import com.example.desalert_back.models.InfanteModel;
+import com.example.desalert_back.models.MedicoModel;
 import com.example.desalert_back.repositories.HistoriaClinicaRepository;
 import com.example.desalert_back.repositories.InfanteRepository;
+import com.example.desalert_back.repositories.MedicoRepository;
 
 
 
@@ -26,13 +28,22 @@ public class HistoriaClinicaServicioImpl implements HistoriaClinicaService{
 	@Autowired
 	private InfanteRepository infanteRepositorio;
 	
+	@Autowired
+	private MedicoRepository medicoRepositorio;
+	
 	@Override
-	public HistoriaClinicaDTO crearHistoria(long infanteId, HistoriaClinicaDTO historiaDTO) {
+	public HistoriaClinicaDTO crearHistoria(long medicoId, long infanteId, HistoriaClinicaDTO historiaDTO) {
 		HistoriaClinicaModel historia = mapearEntidad(historiaDTO);
+		
+		MedicoModel medico = medicoRepositorio.findById(medicoId)
+				.orElseThrow(()->new ResourceNotFoundException("medico", "id", medicoId));
+		
 		InfanteModel infante = infanteRepositorio.findById(infanteId)
 				.orElseThrow(()->new ResourceNotFoundException("infante", "id", infanteId));
 		
 		historia.setInfante(infante);
+		
+		historia.setMedico(medico);
 		
 		HistoriaClinicaModel nuevaHistoria = historiaRepositorio.save(historia);
 		

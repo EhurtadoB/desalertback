@@ -18,28 +18,28 @@ import com.example.desalert_back.services.AcudienteService;
 import com.example.desalert_back.dto.AcudienteDTO;
 
 @RestController
-@RequestMapping("/api/acudiente")
+@RequestMapping("/api/")
 public class AcudienteController {
 	@Autowired
     private AcudienteService acudienteService;
 	
-	@GetMapping
+	@GetMapping("/personas/acudiente")
 	    public List<AcudienteDTO> listarAcudientes(){
 	        return this.acudienteService.obtenerTodosLosAcudientes();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/personas/acudiente/{id}")
     public ResponseEntity<AcudienteDTO> obtenerAcudientePorId(@PathVariable(name="id") long id){
     	return ResponseEntity.ok(acudienteService.obtenerAcudientePorId(id));
     }
 	
-    @PostMapping()
+    @PostMapping("/personas/acudiente")
     public ResponseEntity<AcudienteDTO> guardarAcudiente(@RequestBody AcudienteDTO acudienteDTO){
     	return new ResponseEntity<>(acudienteService.crearAcudiente(acudienteDTO), HttpStatus.CREATED);
     }
 
     
-    @PutMapping("/{id}")
+    @PutMapping("/personas/acudiente/{id}")
     public ResponseEntity<AcudienteDTO> actualizarAcudientes(@RequestBody AcudienteDTO acudienteDTO, @PathVariable(name="id") long id){
     	AcudienteDTO acudienteRespuesta = acudienteService.actualizarAcudiente(acudienteDTO, id);
     	return new ResponseEntity<>(acudienteRespuesta, HttpStatus.OK);

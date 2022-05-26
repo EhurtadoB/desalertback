@@ -11,26 +11,35 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Medicos")
-@PrimaryKeyJoinColumn(name="Id_persona")
-public class MedicoModel extends  PersonaModel{
-	@Column(name="especialidad")
-    private String especialidad;
-	
+@Table(name = "Medicos")
+@PrimaryKeyJoinColumn(name = "Id_persona")
+public class MedicoModel extends PersonaModel {
+	@Column(name = "especialidad")
+	private String especialidad;
+
 	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = false)
 	private Set<InfanteModel> infantes = new HashSet<>();
-	
-	
-	
+
+	@OneToMany(mappedBy = "medico", cascade = CascadeType.ALL, orphanRemoval = false)
+	private Set<HistoriaClinicaModel> historias = new HashSet<>();
+
 	public MedicoModel() {
 		super();
 	}
 
-	public String getEspecialidad() {
-        return especialidad;
-    }
+	public Set<HistoriaClinicaModel> getHistorias() {
+		return historias;
+	}
 
-    public MedicoModel(String especialidad, Set<InfanteModel> infantes) {
+	public void setHistorias(Set<HistoriaClinicaModel> historias) {
+		this.historias = historias;
+	}
+
+	public String getEspecialidad() {
+		return especialidad;
+	}
+
+	public MedicoModel(String especialidad, Set<InfanteModel> infantes) {
 		super();
 		this.especialidad = especialidad;
 		this.infantes = infantes;
@@ -45,18 +54,13 @@ public class MedicoModel extends  PersonaModel{
 	}
 
 	public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
-  
-    /*
-	public void agregarInfante(InfanteModel infante){
-        if(infantes==null) infantes = new ArrayList<>();
-        infantes.add(infante);
-        infante.setMedico(this);
-    }
-	public List<InfanteModel> getInfantes() {
-		return infantes;
-	}*/
+		this.especialidad = especialidad;
+	}
 
-    
+	/*
+	 * public void agregarInfante(InfanteModel infante){ if(infantes==null) infantes
+	 * = new ArrayList<>(); infantes.add(infante); infante.setMedico(this); } public
+	 * List<InfanteModel> getInfantes() { return infantes; }
+	 */
+
 }

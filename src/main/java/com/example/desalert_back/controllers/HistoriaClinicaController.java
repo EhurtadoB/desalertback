@@ -39,9 +39,9 @@ public class HistoriaClinicaController {
 	}
 	
 	@PreAuthorize("hasRole('ADMIN')")
-	@PostMapping("/infantes/{infanteId}/historias")
-	public ResponseEntity<HistoriaClinicaDTO> guardarHistoriaClinica(@PathVariable(name="infanteId") long infanteId, @RequestBody HistoriaClinicaDTO historiaDTO){
-		return new ResponseEntity<>(historiaServicio.crearHistoria(infanteId, historiaDTO), HttpStatus.CREATED);
+	@PostMapping("/medicos/{medicoId}/infantes/{infanteId}/historias")
+	public ResponseEntity<HistoriaClinicaDTO> guardarHistoriaClinica(@PathVariable(name="medicoId") long medicoId, @PathVariable(name="infanteId") long infanteId, @RequestBody HistoriaClinicaDTO historiaDTO){
+		return new ResponseEntity<>(historiaServicio.crearHistoria(medicoId, infanteId, historiaDTO), HttpStatus.CREATED);
 	}
 	
 	@PreAuthorize("hasRole('ADMIN')")

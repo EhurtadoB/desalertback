@@ -149,6 +149,10 @@ public class HistoriaClinicaModel {
 	@JoinColumn(name = "id_infante", nullable = false)
 	private InfanteModel infante;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_medico", nullable = false)
+	private MedicoModel medico;
+	
 	public Long getId() {
 		return id;
 	}
@@ -526,6 +530,16 @@ public class HistoriaClinicaModel {
 
 	public void setInfante(InfanteModel infante) {
 		this.infante = infante;
+	}
+	
+	
+
+	public MedicoModel getMedico() {
+		return medico;
+	}
+
+	public void setMedico(MedicoModel medico) {
+		this.medico = medico;
 	}
 
 	public HistoriaClinicaModel() {

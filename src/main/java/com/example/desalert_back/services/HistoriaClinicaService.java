@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.desalert_back.dto.HistoriaClinicaDTO;
 
 public interface HistoriaClinicaService {
-	public HistoriaClinicaDTO crearHistoria(long infanteId, HistoriaClinicaDTO historiaDTO);
+	public HistoriaClinicaDTO crearHistoria(long medicoId, long infanteId, HistoriaClinicaDTO historiaDTO);
 	
 	public List<HistoriaClinicaDTO> obtenerHistoriaPorInfante(long infanteId);
 	

@@ -18,29 +18,29 @@ import com.example.desalert_back.services.AuxiliarService;
 import com.example.desalert_back.dto.AuxiliarDTO;
 
 @RestController
-@RequestMapping("/api/auxiliar")
+@RequestMapping("/api/")
 public class AuxiliarController {
 	
 	@Autowired
     private AuxiliarService auxiliarService;
 	
-	@GetMapping
+	@GetMapping("/personas/auxiliar")
 	    public List<AuxiliarDTO> listarAuxiliares(){
 	        return this.auxiliarService.obtenerTodosLosAuxiliares();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/personas/auxiliar/{id}")
     public ResponseEntity<AuxiliarDTO> obtenerAuxiliaresPorId(@PathVariable(name="id") long id){
     	return ResponseEntity.ok(auxiliarService.obtenerAuxiliarPorId(id));
     }
 	
-    @PostMapping()
+    @PostMapping("/personas/auxiliar")
     public ResponseEntity<AuxiliarDTO> guardarAuxiliar(@RequestBody AuxiliarDTO auxiliarDTO){
     	return new ResponseEntity<>(auxiliarService.crearAuxiliar(auxiliarDTO), HttpStatus.CREATED);
     }
 
     
-    @PutMapping("/{id}")
+    @PutMapping("/personas/auxiliar/{id}")
     public ResponseEntity<AuxiliarDTO> actualizarAuxiliares(@RequestBody AuxiliarDTO auxiliarDTO, @PathVariable(name="id") long id){
     	AuxiliarDTO auxiliarRespuesta = auxiliarService.actualizarAuxiliar(auxiliarDTO, id);
     	return new ResponseEntity<>(auxiliarRespuesta, HttpStatus.OK);

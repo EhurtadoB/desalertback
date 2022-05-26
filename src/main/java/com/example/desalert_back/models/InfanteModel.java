@@ -38,6 +38,7 @@ public class InfanteModel extends PersonaModel{
 		this.medico = medico;
 	}
 
+	
 	public MedicoModel getMedico() {
 		return medico;
 	}

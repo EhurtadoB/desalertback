@@ -38,6 +38,8 @@ public abstract class PersonaModel {
 		this.telefono = telefono;
 		this.usuario = usuario;
 	}
+	
+	
 
 	public UsuarioModel getUsuario() {
 		return usuario;

@@ -17,7 +17,7 @@ import com.example.desalert_back.seguridad.JWTAuthResonseDTO;
 import com.example.desalert_back.seguridad.JwtTokenProvider;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/auth/")
 public class AuthController {
 	
 	@Autowired

@@ -11,4 +11,5 @@ import com.example.desalert_back.models.InfanteModel;
 public interface InfanteRepository extends JpaRepository<InfanteModel, Long>{
 	
 	public List<InfanteModel> findByAcudienteId(long acudienteId);
+	public List<InfanteModel> findByMedicoId(long medicoId);
 }

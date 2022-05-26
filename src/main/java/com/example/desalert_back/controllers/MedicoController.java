@@ -16,18 +16,18 @@ public class MedicoController {
     @Autowired
     MedicoService medicoServicio;
 
-    @GetMapping("/medicos")
+    @GetMapping("/personas/medicos")
     public List<MedicoDTO> listarMedicos(){
     	return medicoServicio.obtenerTodosMedicos();
     }
     
-    @GetMapping("/medicos/{id}")
+    @GetMapping("/personas/medicos/{id}")
     public ResponseEntity<MedicoDTO> obtenerMedicoPorId(@PathVariable(name = "id") long id){
     	return ResponseEntity.ok(medicoServicio.obtenerMedicoPorId(id));
     }
     
     
-    @PostMapping("/medicos")
+    @PostMapping("/personas/medicos")
     public ResponseEntity<MedicoDTO> guardarMedico(@RequestBody MedicoDTO medicoDTO){
     	return new ResponseEntity<>(medicoServicio.crearMedico(medicoDTO), HttpStatus.CREATED);
     }
