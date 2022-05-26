@@ -1,5 +1,7 @@
 package com.example.desalert_back.dto;
 
+import java.util.Date;
+
 public class HistoriaClinicaDTO {
 	private long id;
 	private Float altura;
@@ -8,7 +10,8 @@ public class HistoriaClinicaDTO {
 	private String diagnosticoPrevio;
 	private InfanteDTO infanteDTO;
 	private MedicoDTO medicoDTO;
-	/*private String estudioPrevio;
+	private float imc;
+	private String estudioPrevio;
 	private String terapeutaPrevia;
 	private Boolean pecho_materno;
 	private Long duracion;
@@ -62,9 +65,26 @@ public class HistoriaClinicaDTO {
 	private Boolean torax;
 	private Boolean areacardiaca;
 	private Boolean pulmonar;
-	private String firma; */
+	private Date fechaCreacion;
 
 	
+	
+	public float getImc() {
+		return imc;
+	}
+
+	public void setImc(float imc) {
+		this.imc = imc;
+	}
+
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -124,7 +144,7 @@ public class HistoriaClinicaDTO {
 	public void setDiagnosticoPrevio(String diagnosticoPrevio) {
 		this.diagnosticoPrevio = diagnosticoPrevio;
 	}
-/*
+
 	public String getEstudioPrevio() {
 		return estudioPrevio;
 	}
@@ -449,13 +469,5 @@ public class HistoriaClinicaDTO {
 	public void setPulmonar(Boolean pulmonar) {
 		this.pulmonar = pulmonar;
 	}
-	public String getFirma() {
-		return firma;
-	}
-	public void setFirma(String firma) {
-		this.firma = firma;
-	}
-	public HistoriaClinicaDTO() {
-		super();
-	}*/
+	
 }

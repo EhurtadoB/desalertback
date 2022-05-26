@@ -2,6 +2,7 @@ package com.example.desalert_back.dto;
 
 import java.sql.Date;
 
+
 public class InfanteDTO {
 	private long id;
 	private String nombre;

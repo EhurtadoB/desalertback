@@ -2,6 +2,8 @@ package com.example.desalert_back.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 
 @Entity
@@ -15,10 +17,22 @@ public abstract class PersonaModel {
 
 	protected String direccion;
 
+	@JsonFormat(pattern = "ddMMyyyy")
 	protected Date fechaNacimiento;
 
 	protected String sexo;
 	protected Long telefono;
+	protected String cargo;
+
+	
+	
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
 	protected UsuarioModel usuario;

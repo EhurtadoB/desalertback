@@ -30,7 +30,7 @@ public class HistoriaClinicaModel {
 	private String padecimientos;
 	@Column(nullable = true)
 	private String diagnosticoPrevio;
-/*	@Column(nullable = true)
+	@Column(nullable = true)
 	private String estudioPrevio;
 	@Column(nullable = true)
 	private String terapeutaPrevia;
@@ -144,11 +144,11 @@ public class HistoriaClinicaModel {
 	private Boolean areacardiaca;
 	@Column(nullable = true)
 	private Boolean pulmonar;
-	@Column(nullable = true)
-	private String firma;
 	@Column(nullable = false)
-	private Date fechaCreacion;*/
+	private Date fechaCreacion;
 
+	private float imc;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_infante", nullable = false)
 	private InfanteModel infante;
@@ -157,6 +157,23 @@ public class HistoriaClinicaModel {
 	@JoinColumn(name = "id_medico", nullable = false)
 	private MedicoModel medico;
 	
+	
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public float getImc() {
+		return imc;
+	}
+
+	public void setImc(float imc) {
+		this.imc = imc;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -197,7 +214,7 @@ public class HistoriaClinicaModel {
 		this.diagnosticoPrevio = diagnosticoPrevio;
 	}
 
-/*	public String getEstudioPrevio() {
+	public String getEstudioPrevio() {
 		return estudioPrevio;
 	}
 	public void setEstudioPrevio(String estudioPrevio) {
@@ -521,12 +538,6 @@ public class HistoriaClinicaModel {
 	public void setPulmonar(Boolean pulmonar) {
 		this.pulmonar = pulmonar;
 	}
-	public String getFirma() {
-		return firma;
-	}
-	public void setFirma(String firma) {
-		this.firma = firma;
-	}*/
 
 	public InfanteModel getInfante() {
 		return infante;
