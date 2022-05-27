@@ -1,5 +1,7 @@
 package com.example.desalert_back.configuracion;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
 
 import com.example.desalert_back.seguridad.CustomUserDetailsService;
 import com.example.desalert_back.seguridad.JwtAuthenticationEntryPoint;
@@ -57,7 +60,16 @@ public class securityConfig extends WebSecurityConfigurerAdapter {
 			/*.and()
 			.httpBasic();*/
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-
+		//Configuracion de los cors
+        http.cors().configurationSource(request -> {
+            var cors = new CorsConfiguration();
+            cors.setAllowedOrigins(List.of("https://hero-desalert-api.herokuapp.com", "http://127.0.0.1:80", "*"));
+            cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
+            cors.setAllowedHeaders(List.of("*"));
+            return cors;
+        });
+		
+		
 	}
 	
 	@Override
